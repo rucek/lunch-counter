@@ -1,4 +1,16 @@
 @main {
-    <div class="alert">Zostało: 5</div>
-    <button class="btn btn-primary btn-large">Zjedz!</button>
+    <button class="btn btn-primary btn-large" ng-click="eat()" ng-disabled="left == 0" ng-class="buttonClass">{{buttonLabel}}</button>
+    <span class="badge badge-warning" ng-show="left > 0">Zostało: {{left}}</span>
+    <table class="table-condensed table-striped" ng-show="history.length > 0" style="margin-top: 10px;">
+        <thead>
+        <th>#</th>
+        <th>Data</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="lunch in history | orderBy:'date':true">
+            <td>{{$index + 1}}</td>
+            <td>{{lunch.date}}</td>
+        </tr>
+        </tbody>
+    </table>
 }
